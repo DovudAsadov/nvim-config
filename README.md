@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A modular Neovim configuration using native LSP (Neovim 0.11+) and lazy.nvim for plugin management.
+Modular Neovim config with native LSP (0.11+), lazy.nvim, Telescope, and Tokyo Night theme.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ A modular Neovim configuration using native LSP (Neovim 0.11+) and lazy.nvim for
 mv ~/.config/nvim ~/.config/nvim.bak
 
 # Clone this config
-git clone <this-repo> ~/.config/nvim
+git clone https://github.com/DovudAsadov/nvim-config.git ~/.config/nvim
 ```
 
 Open Neovim and plugins will install automatically on first launch.
@@ -69,14 +69,87 @@ Open Neovim and plugins will install automatically on first launch.
 
 **Leader key: `Space`**
 
-### General
+### Essential Vim Commands
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `i` | Normal | Enter insert mode |
+| `Esc` | Insert | Back to normal mode |
+| `u` | Normal | Undo |
+| `Ctrl+r` | Normal | Redo |
+| `.` | Normal | Repeat last command |
+
+### Copy, Paste, Delete
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `yy` | Normal | Copy (yank) entire line |
+| `y` | Visual | Copy selected text |
+| `yw` | Normal | Copy word |
+| `p` | Normal | Paste after cursor |
+| `P` | Normal | Paste before cursor |
+| `dd` | Normal | Delete (cut) entire line |
+| `d` | Visual | Delete selected text |
+| `dw` | Normal | Delete word |
+| `x` | Normal | Delete character under cursor |
+
+### Search and Replace
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `/text` | Normal | Search forward for "text" |
+| `?text` | Normal | Search backward for "text" |
+| `n` | Normal | Next search result |
+| `N` | Normal | Previous search result |
+| `*` | Normal | Search word under cursor |
+| `:%s/old/new/g` | Command | Replace all "old" with "new" in file |
+
+### Navigation
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `gg` | Normal | Go to first line |
+| `G` | Normal | Go to last line |
+| `0` | Normal | Go to beginning of line |
+| `$` | Normal | Go to end of line |
+| `w` | Normal | Jump to next word |
+| `b` | Normal | Jump to previous word |
+| `%` | Normal | Jump to matching bracket |
+| `Ctrl+d` | Normal | Scroll half page down |
+| `Ctrl+u` | Normal | Scroll half page up |
+| `:42` | Command | Go to line 42 |
+
+### Selection (Visual Mode)
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `v` | Normal | Start character selection |
+| `V` | Normal | Select entire line |
+| `Ctrl+v` | Normal | Block (column) selection |
+| `vw` | Normal | Select word |
+| `viw` | Normal | Select inner word |
+| `vi"` | Normal | Select inside quotes |
+| `vi{` | Normal | Select inside braces |
+| `vip` | Normal | Select inner paragraph |
+
+### Save, Quit, Files
 
 | Key | Mode | Action |
 |-----|------|--------|
 | `<leader>w` | Normal | Save file |
 | `<leader>q` | Normal | Quit |
+| `:wq` | Command | Save and quit |
+| `:q!` | Command | Quit without saving |
+| `:wa` | Command | Save all open files |
+
+### Indentation
+
+| Key | Mode | Action |
+|-----|------|--------|
 | `<` | Visual | Indent left (stays in visual mode) |
 | `>` | Visual | Indent right (stays in visual mode) |
+| `>>` | Normal | Indent line right |
+| `<<` | Normal | Indent line left |
 
 ### Window Navigation
 
@@ -86,6 +159,8 @@ Open Neovim and plugins will install automatically on first launch.
 | `Ctrl+j` | Normal | Move to lower window |
 | `Ctrl+k` | Normal | Move to upper window |
 | `Ctrl+l` | Normal | Move to right window |
+| `:vs` | Command | Vertical split |
+| `:sp` | Command | Horizontal split |
 
 ### Buffer Navigation
 
@@ -93,6 +168,7 @@ Open Neovim and plugins will install automatically on first launch.
 |-----|------|--------|
 | `Shift+l` | Normal | Next buffer |
 | `Shift+h` | Normal | Previous buffer |
+| `:bd` | Command | Close current buffer |
 
 ### File Explorer (nvim-tree)
 
@@ -105,10 +181,10 @@ Open Neovim and plugins will install automatically on first launch.
 | Key | Mode | Action |
 |-----|------|--------|
 | `<leader>ff` | Normal | Find files |
-| `<leader>fg` | Normal | Live grep (search text) |
+| `<leader>fg` | Normal | Live grep (search text in all files) |
 | `<leader>fb` | Normal | Find open buffers |
 
-### LSP
+### LSP (Code Intelligence)
 
 | Key | Mode | Action |
 |-----|------|--------|
